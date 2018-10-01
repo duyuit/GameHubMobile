@@ -1,0 +1,3 @@
+rootProject.name = 'GamePlatform'
+
+include ':app'
