@@ -7,11 +7,13 @@ import React, { Component } from 'react';
 import {Thumbnail, Container, View, Left, Right, Button, Icon, Item, Input } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import {TouchableOpacity} from 'react-native'
+import ImageSlider from 'react-native-image-slider';
 // Our custom files and classes import
 import Colors from '../Colors';
 import Text from '../component/Text';
 import Navbar from '../component/Navbar';
 import Signup from './Signup'
+
 export default class Login extends Component {
   constructor(props) {
       super(props);
@@ -23,14 +25,16 @@ export default class Login extends Component {
       };
   }
 
-  loadSignUp()
-  {
-    Actions.Signup();
-  }
+ 
   render() {
     return(
       <Container style={{backgroundColor: '#fdfdfd'}}>
         <Navbar title="LOGIN" />
+        <ImageSlider images={[
+    'http://placeimg.com/640/480/any',
+    'http://placeimg.com/640/480/any',
+    'http://placeimg.com/640/480/any'
+  ]}/>
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', paddingLeft: 50, paddingRight: 50}}>
         <View  style={{marginBottom:70}}>
         <Thumbnail  source={require('../image/logo.png')}  large style={{width:400,height:150}}></Thumbnail>
@@ -40,7 +44,7 @@ export default class Login extends Component {
             <Text style={{fontSize: 24, fontWeight: 'bold', textAlign: 'left', width: '100%', color: Colors.navbarBackgroundColor}}>Welcome, </Text>
             <View style={{flexDirection:'row'}}>
               <Text style={{fontSize: 18, textAlign: 'left', color: '#687373'}}>Login to continue or</Text>
-            <TouchableOpacity  onPress= {() => {Actions.pageTwo(); }}>
+            <TouchableOpacity  onPress= {() => {Actions.signup(); }}>
             <Text rounded style={{fontSize: 18, textAlign: 'right', color: '#4286f4'}}> Sign up </Text>
             </TouchableOpacity>
              

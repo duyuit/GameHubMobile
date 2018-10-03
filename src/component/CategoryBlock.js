@@ -4,32 +4,71 @@
 
 // React native and others libraries imports
 import React, { Component } from 'react';
-import { Image, Dimensions, TouchableOpacity } from 'react-native';
-import { View  } from 'native-base';
+import { Image, Dimensions, TouchableOpacity,ImageBackground } from 'react-native';
+import { View, Button, Left, Body, Right  } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-
+import ImageSlider from 'react-native-image-slider';
 // Our custom files and classes import
 import Text from './Text';
+import ListGame from './ListGame'
+import Colors from '../Colors'
 
 export default class CategoryBlock extends Component {
+  constructor(props)
+  {
+    super(props);
+    this.state = {
+     
+     index:0,
+    };
+
+    setInterval(() => {
+      if(this.state.index==2)
+      {
+        this.setState({index:0});
+      }else
+      this.setState({index:this.state.index+1});
+
+     
+    }, 4050);
+  }
   render() {
     return(
-      <View style={{flex:1}}>
+    
+      <View  style={{flex:1,paddingTop:this.props._margin,backgroundColor: Colors.navbarBackgroundColor}}>
+      <View> 
+        <Text style={{fontSize:25,color:'white',fontWeight:'bold'}}>Super Hot!!!!!</Text>
+      
+        </View>
         <TouchableOpacity
+        style={{marginTop:10}}
           onPress={this._onPress.bind(this)}
-          activeOpacity={0.9}
-        >
+          activeOpacity={0.9}>   
           <View>
-            <Image style={styles.image} source={{uri: this.props.image}} />
-            <View style={styles.overlay} />
-            <View style={styles.border} />
+
+           
+           <ImageSlider  autoPlayWithInterval={4000} style={styles.image} images={[
+        'https://img.gta5-mods.com/q95/images/gta-online-missions-for-sp/ff6dbe-gtaonline_art_2880x1800.jpg',
+        'https://phongvu.vn/cong-nghe/wp-content/uploads/2018/09/csgo-free.jpg',
+        'https://cdn.images.express.co.uk/img/dynamic/143/590x/PUBG-886916.jpg'
+      ]}/>
+           
+            
+          
             <View style={styles.text}>
-              <Text style={styles.title}>{this.props.title}</Text>
-              <Text style={styles.subtitle}>Shop Now</Text>
+             <Button  full  style={{marginStart:-15,backgroundColor: 'rgba(0, 0, 0, 0.5)',height:50,borderBottomStartRadius:50,borderBottomEndRadius:10}}>
+                <Text  style={{paddingLeft:20,fontSize:18,width:'100%',color:'white',textAlign:'left'}}>{games[this.state.index].name}</Text>
+             </Button>
             </View>
           </View>
         </TouchableOpacity>
+        <View style={{width:'100%'}}>
+          <ListGame games={games}></ListGame>
+        </View>
+
+      
       </View>
+  
     );
   }
 
@@ -37,14 +76,56 @@ export default class CategoryBlock extends Component {
     Actions.category({id: this.props.id, title: this.props.title});
   }
 }
+var games=[
+  {
+    key:1,
+    name:'GTA V',
+    cost:100,
+    tag:'FPS,Open world',
+    img:'https://img.gta5-mods.com/q95/images/gta-online-missions-for-sp/ff6dbe-gtaonline_art_2880x1800.jpg'
+  }
+  ,
+  {
+    key:2,
+    name:'CSGO',
+    cost:100,
+    tag:'FPS,Esport',
+    img:'https://phongvu.vn/cong-nghe/wp-content/uploads/2018/09/csgo-free.jpg'
+   
+  }
+  , 
+  {
+    key:3,
+    name:'PUBG',
+    cost:100,
+    tag:'Survive, Battleground',
+    img:'https://cdn.images.express.co.uk/img/dynamic/143/590x/PUBG-886916.jpg'
+
+  }, 
+  {
+    key:3,
+    name:'PUBG',
+    cost:100,
+    tag:'Survive, Battleground',
+    img:'https://cdn.images.express.co.uk/img/dynamic/143/590x/PUBG-886916.jpg'
+
+  },
+  {
+    key:2,
+    name:'CSGO',
+    cost:100,
+    tag:'FPS,Esport',
+    img:'https://phongvu.vn/cong-nghe/wp-content/uploads/2018/09/csgo-free.jpg'
+   
+  }];
 
 const styles = {
   text: {
     width: Dimensions.get('window').width,
     height: 200,
     position: 'absolute',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
   },
   title: {
     textAlign: 'center',
