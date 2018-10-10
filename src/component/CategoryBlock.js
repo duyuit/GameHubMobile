@@ -11,6 +11,7 @@ import ImageSlider from 'react-native-image-slider';
 // Our custom files and classes import
 import Text from './Text';
 import ListGame from './ListGame'
+import ListGameHori from './ListGameHori'
 import Colors from '../Colors'
 
 export default class CategoryBlock extends Component {
@@ -56,14 +57,21 @@ export default class CategoryBlock extends Component {
             
           
             <View style={styles.text}>
-             <Button  full  style={{marginStart:-15,backgroundColor: 'rgba(0, 0, 0, 0.5)',height:50,borderBottomStartRadius:50,borderBottomEndRadius:10}}>
-                <Text  style={{paddingLeft:20,fontSize:18,width:'100%',color:'white',textAlign:'left'}}>{games[this.state.index].name}</Text>
+             <Button  full  style={{marginStart:-15,backgroundColor: 'rgba(0, 0, 0, 0.5)',
+             height:50,borderBottomStartRadius:50,borderBottomEndRadius:10}}>
+                <Text  style={{paddingLeft:20,fontSize:18,width:'100%',color:'white',textAlign:'left'}}>
+                {games[this.state.index].name}
+                </Text>
              </Button>
             </View>
           </View>
         </TouchableOpacity>
         <View style={{width:'100%'}}>
-          <ListGame games={games}></ListGame>
+        {
+          this.props.isHoriental ? 
+           <ListGameHori games={games}></ListGameHori> : <ListGame games={games}></ListGame>
+        }
+         
         </View>
 
       

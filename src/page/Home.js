@@ -58,9 +58,17 @@ export default class Home extends Component {
         <CategoryBlock _margin = {10} key={categories[i].id} id={categories[i].id} image={categories[i].image} title={categories[i].title} />
       );
       }else
-      cat.push(
-        <CategoryBlock _margin = {30} key={categories[i].id} id={categories[i].id} image={categories[i].image} title={categories[i].title} />
-      );
+      {
+        if(i%2 == 0)
+        cat.push(
+          <CategoryBlock isHoriental='false' _margin = {30} key={categories[i].id} id={categories[i].id} image={categories[i].image} title={categories[i].title} />
+        );
+        else 
+        cat.push(
+          <CategoryBlock isHoriental = 'true' _margin = {30} key={categories[i].id} id={categories[i].id} image={categories[i].image} title={categories[i].title} />
+        );
+      }
+      
     }
     return cat;
   }
