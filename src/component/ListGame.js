@@ -30,7 +30,7 @@ export default class ListGame extends Component {
      
   cat.push(
     <ListItem horizontal={true}>
-      <GameItem game={this.props.games[i]}></GameItem>
+      <GameItem game={this.props.games[i]} isHori='false'></GameItem>
     </ListItem>
 
  );
@@ -40,10 +40,7 @@ export default class ListGame extends Component {
   render() {
     return(
    
-    <View>
-  
-       
-                       
+    <View>          
             {this._onRenderItem()}
          
         

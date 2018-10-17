@@ -50,7 +50,7 @@ export default class ListGame extends Component {
              data={this.props.games}
              renderItem={({ item: rowData }) => {
                 return (
-                    <GameItem game={rowData} isHori='true'></GameItem>
+                    <GameItem game={rowData} horizontal='true'></GameItem>
                 );
               }}
              keyExtractor={(item, index) => index}

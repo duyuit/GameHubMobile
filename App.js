@@ -6,13 +6,14 @@ import Signup from './src/page/Signup';
 import Login from './src/page/Login';
 import Home from './src/page/Home'
 import ListGame from './src/component/ListGame'
+import GameShow from './src/component/GameShow'
 export default class App extends Component {
   render() {
     return (
       <Root>
         <Router>
           <Scene key="root">
-            <Scene initial key="home" component={Home} hideNavBar />
+            <Scene initial key="home" component={GameShow} hideNavBar />
      
             {/* <Scene key="search" component={Search} modal hideNavBar />
             <Scene key="cart" component={Cart} modal hideNavBar />

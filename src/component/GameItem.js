@@ -23,7 +23,10 @@ export default class GameItem extends Component {
   {
     
     return(
-      <View style={{flexDirection:'row',marginLeft:10,marginTop:10}}>   
+      <TouchableOpacity>
+
+    
+    <View style={{flexDirection:'row',marginLeft:10,marginTop:10}}>   
       <View style={{marginRight:5}}>
       <View style={{flexDirection:'row'}}>
       <Thumbnail  style={{width:80,height:70,borderRadius:10}} source={{uri: this.props.game.img}} />
@@ -36,12 +39,16 @@ export default class GameItem extends Component {
       <Body/>
     </View>
     </View>
+    </TouchableOpacity>
     );
   }
   onRenderVertical()
   {
     return(
-      <View style={{flexDirection:'row'}}>   
+      <TouchableOpacity style={{flexDirection:'row'}}>
+
+  
+  
       <View style={{flexDirection:'row'}}>
       <Thumbnail  style={{width:80,height:70,borderRadius:10}} source={{uri: this.props.game.img}} />
       <View style={{marginStart:10,marginTop:10,flexDirection:'column'}}>
@@ -58,14 +65,14 @@ export default class GameItem extends Component {
       {this.props.game.cost}K</Text>
       </TouchableOpacity>
       </View> 
-    </View>
+    </TouchableOpacity>
     );
   }
   render() {
     return(
    
     
-     this.props.isHori ?  this.onRenderRow() : this.onRenderVertical()
+     this.props.isHori ?  this.onRenderVertical() : this.onRenderRow() 
      
     
       
