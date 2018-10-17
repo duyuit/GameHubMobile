@@ -23,7 +23,11 @@ export default class GameItem extends Component {
   {
     
     return(
-      <TouchableOpacity>
+      <TouchableOpacity
+      onPress = {()=>
+        {
+            Actions.GameShow();
+        }}>
 
     
     <View style={{flexDirection:'row',marginLeft:10,marginTop:10}}>   
@@ -45,7 +49,13 @@ export default class GameItem extends Component {
   onRenderVertical()
   {
     return(
-      <TouchableOpacity style={{flexDirection:'row'}}>
+      <TouchableOpacity
+      style={{flexDirection:'row'}}
+      onPress = {()=>
+      {
+          Actions.GameShow();
+      }}
+    >
 
   
   

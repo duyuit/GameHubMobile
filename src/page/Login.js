@@ -30,11 +30,6 @@ export default class Login extends Component {
     return(
       <Container style={{backgroundColor: '#fdfdfd'}}>
         <Navbar title="LOGIN" />
-        <ImageSlider images={[
-    'http://placeimg.com/640/480/any',
-    'http://placeimg.com/640/480/any',
-    'http://placeimg.com/640/480/any'
-  ]}/>
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', paddingLeft: 50, paddingRight: 50}}>
         <View  style={{marginBottom:70}}>
         <Thumbnail  source={require('../image/logo.png')}  large style={{width:400,height:150}}></Thumbnail>
@@ -76,7 +71,8 @@ export default class Login extends Component {
       Username: this.state.username
       Password: this.state.password
     */
-    this.setState({hasError: true, errorText: 'Invalid username or password !'});
+    //this.setState({hasError: true, errorText: 'Invalid username or password !'});
+    Actions.home();
   }
 
 

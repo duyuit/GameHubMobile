@@ -43,7 +43,7 @@ export default class CategoryBlock extends Component {
         </View>
         <TouchableOpacity
         style={{marginTop:10}}
-          onPress={this._onPress.bind(this)}
+          onPress={()=>{Actions.GameShow();}}
           activeOpacity={0.9}>   
           <View>
 
@@ -68,8 +68,8 @@ export default class CategoryBlock extends Component {
         </TouchableOpacity>
         <View style={{width:'100%'}}>
         {
-          this.props.isHoriental ? 
-           <ListGameHori games={games}></ListGameHori> : <ListGame games={games}></ListGame>
+          this.props.isHoriental =='true' ? 
+          <ListGameHori games={games}></ListGameHori> :    <ListGame games={games}></ListGame>
         }
          
         </View>

@@ -95,5 +95,10 @@ var categories = [
     id: 4,
     title: 'ACCESORIES',
     image: 'http://res.cloudinary.com/atf19/image/upload/c_scale,w_467/v1500284346/pexels-photo-293229_qxnjtd.jpg'
+  },
+  {
+    id: 5,
+    title: 'ACCESORIES',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlYuRlRymq3NwEGy_09elJxLesdKIRX_bQNykXCKJe3azUaeqA'
   }
 ];
