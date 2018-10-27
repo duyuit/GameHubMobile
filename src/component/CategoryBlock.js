@@ -13,6 +13,7 @@ import Text from './Text';
 import ListGame from './ListGame'
 import ListGameHori from './ListGameHori'
 import Colors from '../Colors'
+import App from '../../App';
 
 export default class CategoryBlock extends Component {
   constructor(props)
@@ -32,6 +33,10 @@ export default class CategoryBlock extends Component {
 
      
     }, 4050);
+  }
+  onShowGameList()
+  {
+    Actions.gameListShow({games:games});
   }
   render() {
     return(
@@ -71,10 +76,12 @@ export default class CategoryBlock extends Component {
           this.props.isHoriental =='true' ? 
           <ListGameHori games={games}></ListGameHori> :    <ListGame games={games}></ListGame>
         }
-         
+   
         </View>
 
-      
+             <TouchableOpacity onPress={() => this.onShowGameList()} style={{alignSelf:'flex-end',paddingEnd:15}}>
+            <Text style={{color:'white',fontSize:25}}>See all</Text>
+            </TouchableOpacity>
       </View>
   
     );
@@ -90,7 +97,7 @@ var games=[
     name:'GTA V',
     cost:100,
     tag:'FPS,Open world',
-    img:'https://img.gta5-mods.com/q95/images/gta-online-missions-for-sp/ff6dbe-gtaonline_art_2880x1800.jpg'
+    img:'https://img.gta5-mods.com/q95/images/gta-online-missions-for-sp/ff6dbe-gtaonline_art_2880x1800.jpg',
   }
   ,
   {

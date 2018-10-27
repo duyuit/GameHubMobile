@@ -59,7 +59,6 @@ export default class GameItem extends Component {
            
         <View style={styles.container2}>
         <Rating
-
         type="custom"
         ratingColor='black'
         ratingBackgroundColor='black'

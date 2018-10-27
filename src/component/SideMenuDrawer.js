@@ -17,7 +17,7 @@ export default class SideMenuDrawer extends Component {
     return(
       <Drawer
         ref={(ref) => this._drawer = ref}
-        content={<SideMenu />}
+        content={<SideMenu _drawer = {this}></SideMenu>}
         tapToClose={true}
         type="overlay"
         openDrawerOffset={0.3}

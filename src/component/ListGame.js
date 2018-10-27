@@ -26,8 +26,9 @@ export default class ListGame extends Component {
   _onRenderItem()
   {
     let cat = [];
-    for(var i=0; i<3; i++) {
-     
+    var countItem = 3;
+    if(this.props.specialList == 'true') countItem = this.props.games.length;
+    for(var i=0; i<countItem; i++) {
   cat.push(
     <ListItem horizontal={true}>
       <GameItem game={this.props.games[i]} isHori='false'></GameItem>
@@ -42,14 +43,6 @@ export default class ListGame extends Component {
    
     <View>          
             {this._onRenderItem()}
-         
-        
-          <View >
-            <TouchableOpacity style={{alignSelf:'flex-end',paddingEnd:15}}>
-            <Text style={{color:'white',fontSize:20}}>See all</Text>
-            </TouchableOpacity>
-
-        </View>
       </View>
      
      

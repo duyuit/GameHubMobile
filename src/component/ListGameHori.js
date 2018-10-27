@@ -50,20 +50,12 @@ export default class ListGame extends Component {
              data={this.props.games}
              renderItem={({ item: rowData }) => {
                 return (
-                    <GameItem game={rowData} horizontal='true'></GameItem>
+                    <GameItem game={rowData} isHori='true'></GameItem>
                 );
               }}
              keyExtractor={(item, index) => index}
             >
-
             </FlatList>   
-        
-          <View >
-            <TouchableOpacity style={{alignSelf:'flex-end',paddingEnd:15}}>
-            <Text style={{color:'white',fontSize:20}}>See all</Text>
-            </TouchableOpacity>
-
-        </View>
       </View>
      
      

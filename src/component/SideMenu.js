@@ -11,7 +11,6 @@ import { Actions } from 'react-native-router-flux';
 // Our custom files and classes import
 import SideMenuSecondLevel from './SideMenuSecondLevel';
 import Text from './Text';
-
 export default class SideMenu extends Component {
   constructor(props) {
       super(props);
@@ -38,23 +37,19 @@ export default class SideMenu extends Component {
     if(!this.state.subMenu) {
       return(
         <View>
-          <View style={{paddingLeft: 15, paddingRight: 15}}>
-            <Item error={this.state.searchError}>
-                <Input
-                  placeholder='Search...'
-                  onChangeText={(text) => this.setState({search: text, searchError: false})}
-                  onSubmitEditing={() => this.search()}
-                />
-                <Icon active name='ios-search-outline' onPress={() => this.search()} />
-            </Item>
-          </View>
+      
           <View style={{paddingRight: 15}}>
             <List>
               <ListItem
                 icon
                 key={0}
                 button={true}
-                onPress={() => Actions.home()}
+                onPress={() => {
+                  if(Actions.currentScene === 'home')
+                  {
+                    this.props._drawer.close();
+                  }
+                }}
               >
                 <Body>
                   <Text>Home</Text>
@@ -86,11 +81,6 @@ export default class SideMenu extends Component {
         </View>
       );
     }
-    else {
-      return(
-        <SideMenuSecondLevel back={this.back.bind(this)} title={this.state.clickedItem} menu={this.state.subMenuItems} />
-      );
-    }
   }
 
   renderMenuItems() {
@@ -103,6 +93,8 @@ export default class SideMenu extends Component {
           key={item.id}
           button={true}
           onPress={() => this.itemClicked(item)}
+          style={{marginTop:15}}
+
         >
           <Body>
             <Text>{item.title}</Text>
@@ -117,10 +109,15 @@ export default class SideMenu extends Component {
   }
 
   itemClicked(item) {
-    if(!item.subMenu || item.subMenu.length<=0) {
-      Actions.category({id: item.id, title: item.title});
-      return;
-    }
+    if(item.title === "Game Charts")
+    Actions.home();
+    else
+    if(item.title === "HOTS")
+    Actions.login();
+    else
+    if(item.title === "SALES")
+    Actions.search();
+    
     var animationConfig = {
         duration: 150,
         create: {
@@ -157,6 +154,17 @@ export default class SideMenu extends Component {
       Actions.search({searchText: this.state.search});
   }
 
+  onPageClick(item)
+  {
+    if(item.title == "Game Charts")
+    Actions.home();
+    else
+    if(item.title == "HOTS")
+    Actions.home();
+    else
+    if(item.title == "SALES")
+    Actions.home();
+  }
   renderSecondaryList() {
     let secondaryItems = [];
     menusSecondaryItems.map((item, i) => {
@@ -166,7 +174,8 @@ export default class SideMenu extends Component {
           icon
           key={item.id}
           button={true}
-          onPress={Actions[item.key]}
+          onPress={(item)=> this.onPageClick(item)}
+          style={{marginTop:15}}
         >
           <Left>
             <Icon style={{fontSize: 18}} name={item.icon} />
@@ -199,108 +208,26 @@ const styles = {
 var menuItems = [
   {
     id: 1,
-    title: 'MEN',
-    subMenu: [
-      {
-        id: 5,
-        title: 'NEW IN'
-      },
-      {
-        id: 6,
-        title: 'JACKETS'
-      },
-      {
-        id: 7,
-        title: 'BLAZERS'
-      },
-      {
-        id: 8,
-        title: 'TROUSERS'
-      },
-      {
-        id: 9,
-        title: 'JEANS'
-      },
-      {
-        id: 10,
-        title: 'SHORTS'
-      },
-      {
-        id: 11,
-        title: 'SHOES'
-      }
-    ]
+    title: 'Game Charts',
   },
   {
     id: 2,
-    title: 'WOMEN',
-    subMenu: [
-      {
-        id: 12,
-        title: 'NEW IN'
-      },
-      {
-        id: 13,
-        title: 'JACKETS'
-      },
-      {
-        id: 14,
-        title: 'BLAZERS'
-      },
-      {
-        id: 15,
-        title: 'TROUSERS'
-      },
-      {
-        id: 16,
-        title: 'JEANS'
-      },
-      {
-        id: 17,
-        title: 'SHORTS'
-      },
-      {
-        id: 18,
-        title: 'SHOES'
-      }
-    ]
+    title: 'HOTS',
   },
   {
     id: 3,
-    title: 'KIDS'
+    title: 'SALES',
   },
-  {
-    id: 4,
-    title: 'ACCESORIES'
-  }
 ];
 
 
 const menusSecondaryItems = [
-  {
-    id: 190,
-    title: 'Login',
-    icon: 'ios-person',
-    key: 'login'
-  },
-  {
-    id: 519,
-    title: 'Signup',
-    icon: 'ios-person-add',
-    key: 'signup'
-  },
+ 
   {
     id: 19,
     title: 'Wish List',
     icon: 'heart',
     key: 'wishlist'
-  },
-  {
-    id: 20,
-    key: 'map',
-    title: 'Store Finder',
-    icon: 'ios-pin',
-    key: 'map'
   },
   {
     id: 21,
