@@ -5,7 +5,7 @@
 // React native and others libraries imports
 import React, { Component } from 'react';
 import { Image } from 'react-native';
-import { Container, Content, View, Button, Left, Right, Icon, Card, CardItem, cardBody } from 'native-base';
+import { Container, Content, View, Button, Left, Right, Icon, Card, CardItem, cardBody, Thumbnail } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
 
@@ -32,8 +32,8 @@ export default class Home extends Component {
         <Button onPress={() => Actions.search({games:games})} transparent>
           <Icon name='ios-search-outline' />
         </Button>
-        <Button onPress={() => Actions.cart()} transparent>
-          <Icon name='ios-cart' />
+        <Button onPress={() => Actions.gameLibrary({games:games})} transparent>
+          <Thumbnail   source={require('../image/download.png')} small style={{width:20,height:20,borderRadius:0}}></Thumbnail>
         </Button>
       </Right>
     );

@@ -96,8 +96,9 @@ export default class SideMenu extends Component {
           style={{marginTop:15}}
 
         >
-          <Body>
+          <Body >
             <Text>{item.title}</Text>
+           
           </Body>
           <Right>
             <Icon name="ios-arrow-forward" />

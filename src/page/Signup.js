@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import { ScrollView } from 'react-native';
 import { Container, View, Left, Right, Button, Icon, Item, Input } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-
+import {axios} from 'axios'
 // Our custom files and classes import
 import Colors from '../Colors';
 import Text from '../component/Text';
@@ -25,6 +25,11 @@ export default class Signup extends Component {
         hasError: false,
         errorText: ''
       };
+      var instance = axios.create({
+        baseURL: 'http://gamestorecrosplatform.azurewebsites.net/',
+        timeout: 1000,
+        headers: {'X-Custom-Header': 'foobar'}
+      });
   }
 
 
@@ -109,7 +114,8 @@ export default class Signup extends Component {
       return;
     }
     this.setState({hasError: false});
-    Actions.home();
+
+    Actions.login();
   }
 
   verifyEmail(email) {
