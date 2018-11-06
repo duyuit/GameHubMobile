@@ -30,13 +30,13 @@ export default class ListGameImage extends Component {
               {
                 return (
                   <Thumbnail  style={{width:300,height:200,borderRadius:10,borderWidth:2,borderColor:'white'}}
-                  source={{uri: rowData.img}} />
+                  source={{uri: rowData.urlOnline}} />
                   );
               }else
               {
                 return (
                   <Thumbnail  style={{marginLeft:30,width:300,height:200,borderRadius:10,borderWidth:2,borderColor:'white'}}
-                  source={{uri: rowData.img}} />
+                  source={{uri: rowData.urlOnline}} />
                   );
               }
                 

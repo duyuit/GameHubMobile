@@ -4,13 +4,12 @@
 
 // React native and others libraries imports
 import React, { Component } from 'react';
-import { Image } from 'react-native';
+import {Text, Image } from 'react-native';
 import { Container, Content, View, Button, Left, Right, Icon, Card, CardItem, cardBody, Thumbnail } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-
+import axios from 'axios';
 
 // Our custom files and classes import
-import Text from '../component/Text';
 import Navbar from '../component/Navbar';
 import SideMenu from '../component/SideMenu';
 import SideMenuDrawer from '../component/SideMenuDrawer';
@@ -18,7 +17,32 @@ import CategoryBlock from '../component/CategoryBlock';
 import Colors from '../Colors'
 
 export default class Home extends Component {
+ constructor(props)
+ {
+  super(props);
+  this.state = {
+    games:[],
+    response:'',
+    isDone:false
+  };
+ }
 
+
+  componentWillMount() {
+    axios.get('http://localhost:49911/api/Games/')
+        .then(response =>{
+        
+          // console.log(this.state.games);
+          //var myresponse =  JSON.stringify(response.data);
+          this.setState({ games: response.data.payload});
+          console.log(String(this.state.games[0].name));
+
+        }).then(()=>{
+          this.setState({isDone:true});
+        });
+     
+
+  }
   render() {
     var left = (
       <Left style={{flex:1}}>
@@ -40,34 +64,37 @@ export default class Home extends Component {
     return(
       
       <SideMenuDrawer ref={(ref) => this._sideMenuDrawer = ref} >
-          <Container >
-            <Navbar left={left} right={right} title="HOME" />
-            <Content>
-              {this.renderCategories()}
-            </Content>
-          </Container>
+    
+    {
+      this.state.isDone?  
+        
+        <Container >
+        <Navbar left={left} right={right} title="HOME" />
+        <Content>
+          {this.renderCategories()}
+        </Content>
+      </Container> 
+      :
+      <Text>Loading....</Text>
+    }
+  
+         
       </SideMenuDrawer>
     );
   }
 
   renderCategories() {
-    games.find
     let cat = [];
     for(var i=0; i<categories.length; i++) {
       if(i==0)
       {
         cat.push(
-        <CategoryBlock games={games} _margin = {10} key={categories[i].id} id={categories[i].id} image={categories[i].image} title={categories[i].title} />
+        <CategoryBlock games={this.state.games} _margin = {10} key={categories[i].id} id={categories[i].id} image={categories[i].image} title={categories[i].title} />
       );
       }else
       {
-        if(i%2 == 0)
         cat.push(
-          <CategoryBlock games={games} isHoriental='false' _margin = {30} key={categories[i].id} id={categories[i].id} image={categories[i].image} title={categories[i].title} />
-        );
-        else 
-        cat.push(
-          <CategoryBlock games={games} isHoriental = 'true' _margin = {30} key={categories[i].id} id={categories[i].id} image={categories[i].image} title={categories[i].title} />
+          <CategoryBlock games={this.state.games} _margin = {30} key={categories[i].id} id={categories[i].id} image={categories[i].image} title={categories[i].title} />
         );
       }
       
@@ -76,48 +103,48 @@ export default class Home extends Component {
   }
 
 }
-var games=[
-  {
-    key:1,
-    name:'GTA V',
-    cost:100,
-    tag:'FPS,Open world',
-    img:'https://img.gta5-mods.com/q95/images/gta-online-missions-for-sp/ff6dbe-gtaonline_art_2880x1800.jpg',
-  }
-  ,
-  {
-    key:2,
-    name:'CSGO',
-    cost:100,
-    tag:'FPS,Esport',
-    img:'https://phongvu.vn/cong-nghe/wp-content/uploads/2018/09/csgo-free.jpg'
+// var games=[
+//   {
+//     key:1,
+//     name:'GTA V',
+//     cost:100,
+//     tag:'FPS,Open world',
+//     img:'https://img.gta5-mods.com/q95/images/gta-online-missions-for-sp/ff6dbe-gtaonline_art_2880x1800.jpg',
+//   }
+//   ,
+//   {
+//     key:2,
+//     name:'CSGO',
+//     cost:100,
+//     tag:'FPS,Esport',
+//     img:'https://phongvu.vn/cong-nghe/wp-content/uploads/2018/09/csgo-free.jpg'
    
-  }
-  , 
-  {
-    key:3,
-    name:'PUBG',
-    cost:100,
-    tag:'Survive, Battleground',
-    img:'https://cdn.images.express.co.uk/img/dynamic/143/590x/PUBG-886916.jpg'
+//   }
+//   , 
+//   {
+//     key:3,
+//     name:'PUBG',
+//     cost:100,
+//     tag:'Survive, Battleground',
+//     img:'https://cdn.images.express.co.uk/img/dynamic/143/590x/PUBG-886916.jpg'
 
-  }, 
-  {
-    key:3,
-    name:'PUBG',
-    cost:100,
-    tag:'Survive, Battleground',
-    img:'https://cdn.images.express.co.uk/img/dynamic/143/590x/PUBG-886916.jpg'
+//   }, 
+//   {
+//     key:3,
+//     name:'PUBG',
+//     cost:100,
+//     tag:'Survive, Battleground',
+//     img:'https://cdn.images.express.co.uk/img/dynamic/143/590x/PUBG-886916.jpg'
 
-  },
-  {
-    key:2,
-    name:'CSGO',
-    cost:100,
-    tag:'FPS,Esport',
-    img:'https://phongvu.vn/cong-nghe/wp-content/uploads/2018/09/csgo-free.jpg'
+//   },
+//   {
+//     key:2,
+//     name:'CSGO',
+//     cost:100,
+//     tag:'FPS,Esport',
+//     img:'https://phongvu.vn/cong-nghe/wp-content/uploads/2018/09/csgo-free.jpg'
    
-  }];
+//   }];
 var categories = [
   {
     id: 1,

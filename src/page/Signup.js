@@ -25,11 +25,7 @@ export default class Signup extends Component {
         hasError: false,
         errorText: ''
       };
-      var instance = axios.create({
-        baseURL: 'http://gamestorecrosplatform.azurewebsites.net/',
-        timeout: 1000,
-        headers: {'X-Custom-Header': 'foobar'}
-      });
+
   }
 
 

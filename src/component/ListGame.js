@@ -4,7 +4,7 @@
 
 // React native and others libraries imports
 import React, { Component } from 'react';
-import { Image, Dimensions, TouchableOpacity } from 'react-native';
+import { FlatList,Image, Dimensions, TouchableOpacity } from 'react-native';
 import {Card,CardItem, View, Button ,List,ListItem,Thumbnail,Left,Body,Right } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 // Our custom files and classes import
@@ -17,34 +17,41 @@ export default class ListGame extends Component {
   {
     super(props);
     this.state = {
-     
+     games:[],
      index:0,
     };
 
    
   }
-  _onRenderItem()
+  componentWillMount()
   {
-    let cat = [];
+    
     var countItem = 3;
-    if(this.props.specialList == 'true') countItem = this.props.games.length;
-    for(var i=0; i<countItem; i++) {
-  cat.push(
-    <ListItem horizontal={true}>
-      <GameItem game={this.props.games[i]} isHori='false'></GameItem>
-    </ListItem>
+    if(this.props.specialList == 'true')
+     countItem = this.props.games.length;
 
- );
+     var games_temp=[];
+    for(var i=0; i<countItem; i++) {
+      games_temp.push(this.props.games[i]);
     }
-    return cat; 
+    this.setState({games:games_temp});
   }
   render() {
     return(
    
-    <View>          
-            {this._onRenderItem()}
-      </View>
-     
+ 
+     <View>    
+     <FlatList
+      data={this.state.games}
+      renderItem={({ item: rowData }) => {
+         return (
+             <GameItem game={rowData} isHori='false'></GameItem>
+         );
+       }}
+      keyExtractor={(item, index) => index}
+     >
+     </FlatList>   
+</View>
      
       
     );

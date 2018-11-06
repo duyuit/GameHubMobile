@@ -106,21 +106,3 @@ var styles=
    marginLeft:20
 }
 }
-var images=[
-  {
-    index:0,
-    img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTZhylJ7Ezh_KtghK_QYP8s8DJHG68ly8POwr1kw09uw0ffN-G'
-  },
-  {
-    index:1,
-    img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3hGD1kO0R_Wu8xibPteXtQrjXbGukb7qDr6wbMKVT4WGfryJO'
-  },
-  {
-    index:2,
-    img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyCVZBf8F0dyRIkW9NLtDmbcfQHQ-R87NYhziqrsjgLyUGPh95'
-  },
-  {
-    index:3,
-    img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo1tqI8qJhKxhbVyhKqFa5CnlSOGjY9N57XdYpw1bw5Xmmac3V'
-  }
-]
