@@ -5,7 +5,6 @@ import { Scene, Router, Actions } from 'react-native-router-flux';
 import Signup from './src/page/Signup';
 import Login from './src/page/Login';
 import Home from './src/page/Home'
-import ListGame from './src/component/ListGame'
 import GameShow from './src/page/GameShow'
 import GameListShow from './src/page/GameListShow'
 import Search from './src/page/Search'

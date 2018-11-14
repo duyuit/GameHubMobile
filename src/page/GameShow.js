@@ -20,9 +20,18 @@ export default class GameItem extends Component {
     this.state = {
      images:props.game.imageGames,
      index:0,
-     game:props.game
+     game:props.game,
+     price:''
     };
   }
+  componentWillMount()
+  {
+    if(this.props.game.price === 0)
+    this.setState({price:'FREE'});
+  else
+    this.setState({price:this.props.game.price/1000+'K'});
+  }
+  
   render() {
     var left = (
         <Left style={{flex:1}}>
@@ -31,19 +40,10 @@ export default class GameItem extends Component {
           </Button>
         </Left>
       );
-      var right = (
-        <Right style={{flex:1}}>
-          <Button onPress={() => Actions.search()} transparent>
-            <Icon name='ios-search-outline' />
-          </Button>
-          <Button onPress={() => Actions.cart()} transparent>
-            <Icon name='ios-cart' />
-          </Button>
-        </Right>
-      );
+   
     return(
         <View style={styles.container}>
-        <Navbar left={left} right={right} title="MY STORE" />
+        <Navbar left={left}  />
         <ScrollView>
         <View style={styles.container2}>
             <Thumbnail  style={{width:120,height:120,borderRadius:20}}
@@ -53,7 +53,7 @@ export default class GameItem extends Component {
                 <Text style={{fontSize:15,color:'rgba(255,255,255,0.6)'}}>{this.state.game.publisher.name}</Text>
                 <TouchableOpacity  style={{borderWidth:2,borderColor:'rgb(0,191,255)',marginTop:30,width:100,height:30,borderRadius:30,backgroundColor:'rgb(0,191,255)'}}>
                     <Text style={{paddingTop:2,textAlign:'center',width:'100%',color:'white',fontSize:15,fontWeight:'bold'}}>
-                    100K</Text>
+                    {this.state.price}</Text>
                 </TouchableOpacity>
             </View>
         </View>

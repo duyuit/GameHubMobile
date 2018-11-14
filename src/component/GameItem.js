@@ -16,39 +16,13 @@ export default class GameItem extends Component {
     super(props);
     this.state = {
      game:props.game,
-     index:0,
     };
   }
-  onRenderRow()
-  {
-    
+  
+  render() {
     return(
-      <TouchableOpacity
-      onPress = {()=>
-        {
-            Actions.GameShow({game:this.state.game});
-        }}>
-
+   
     
-    <View style={{flexDirection:'row',marginLeft:10,marginTop:10}}>   
-      <View style={{marginRight:5}}>
-      <View style={{flexDirection:'row'}}>
-      <Thumbnail  style={{width:80,height:70,borderRadius:10}} source={{uri: this.state.game.imageGames[0].urlOnline}} />
-        <View style={{marginStart:10,marginTop:10,flexDirection:'column'}}>
-          <Text style={{color:'rgba(255,255,255,0.9)',fontSize:18}}>{this.state.game.name}</Text>
-          <Text style={{marginTop:10,color:'rgba(255,255,255,0.6)',fontSize:13}}>{this.state.game.publisher.name}</Text>
-        </View>
-    
-      </View>
-      <Body/>
-    </View>
-    </View>
-    </TouchableOpacity>
-    );
-  }
-  onRenderVertical()
-  {
-    return(
       <TouchableOpacity
       style={{flexDirection:'row',marginTop:20}}
       onPress = {()=>
@@ -71,22 +45,20 @@ export default class GameItem extends Component {
   
         <View>
       <TouchableOpacity  style={{borderWidth:1,borderColor:'white',marginTop:8,width:80,height:40,borderRadius:30,backgroundColor:Colors.navbarBackgroundColor}}>
+      
+    {
+      this.props.game.price === 0 ?  
       <Text style={{paddingTop:10,textAlign:'center',width:'100%',color:'white',fontSize:15,fontWeight:'bold'}}>
-      {this.props.game.money}K</Text>
+      FREE</Text>
+      :
+      <Text style={{paddingTop:10,textAlign:'center',width:'100%',color:'white',fontSize:15,fontWeight:'bold'}}>
+      {this.props.game.price/1000}K</Text>
+    }
+     
       </TouchableOpacity>
       
       </View> 
     </TouchableOpacity>
-    );
-  }
-  render() {
-    return(
-   
-    
-     this.props.isHori ?  this.onRenderVertical() : this.onRenderRow() 
-     
-    
-      
     );
   }
 

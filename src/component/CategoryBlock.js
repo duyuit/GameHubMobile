@@ -10,9 +10,10 @@ import { Actions } from 'react-native-router-flux';
 import ImageSlider from 'react-native-image-slider';
 // Our custom files and classes import
 import Text from './Text';
-import ListGame from './ListGame'
+import ListGame from './ListGameCategory'
 import Colors from '../Colors'
 import App from '../../App';
+import ListGameCategory from './ListGameCategory';
 
 
 export default class CategoryBlock extends Component {
@@ -22,6 +23,7 @@ export default class CategoryBlock extends Component {
     super(props);
     this.state = {
       games: props.games,
+      games_random:[],
       index:0,
       images:[],
       indexArray:[]
@@ -41,6 +43,7 @@ export default class CategoryBlock extends Component {
   {
     var images=[];
     var indexArray=[];
+    var games_random=[];
     for(var i=0;i<3;i++)
     {
       var ran= Math.floor((Math.random() * 15) + 1);
@@ -48,7 +51,20 @@ export default class CategoryBlock extends Component {
       indexArray.push(ran);
     }
     this.setState({images:images,indexArray:indexArray});
-  
+
+    var last_random=[];
+    for(var i=0;i<3;i++)
+    {
+      var ran=Math.floor((Math.random() * 15) + 1);
+      while(last_random.includes(ran))
+      {
+        ran = Math.floor((Math.random() * 15) + 1)
+      }
+      last_random.push(ran);
+      games_random.push(this.state.games[ran]);
+     
+    }
+    this.setState({games_random:games_random});
   }
 
   onShowGameList()
@@ -86,7 +102,7 @@ export default class CategoryBlock extends Component {
         </TouchableOpacity>
         <View style={{width:'100%'}}>
       
-          <ListGame games={this.state.games}></ListGame>
+          <ListGameCategory games={this.state.games_random}></ListGameCategory>
        
    
         </View>

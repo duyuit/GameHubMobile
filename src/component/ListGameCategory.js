@@ -12,7 +12,7 @@ import Text from './Text';
 import Colors from '../Colors';
 import GameItem from './GameItem';
 
-export default class ListGame extends Component {
+export default class ListGameCategory extends Component {
   constructor(props)
   {
     super(props);
@@ -23,16 +23,24 @@ export default class ListGame extends Component {
 
    
   }
+  componentWillMount()
+  {
+    var games_temp=[];
+    for(var i=0; i<3; i++) {
+      games_temp.push(this.props.games[i]);
+    }
+    this.setState({games:games_temp});
+  }
   render() {
     return(
    
  
      <View>    
      <FlatList
-      data={this.props.games}
+      data={this.state.games}
       renderItem={({ item: rowData }) => {
          return (
-             <GameItem game={rowData}></GameItem>
+             <GameItem game={rowData} isHori='false'></GameItem>
          );
        }}
       keyExtractor={(item, index) => index}

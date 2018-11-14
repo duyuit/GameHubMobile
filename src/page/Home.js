@@ -53,10 +53,10 @@ export default class Home extends Component {
     );
     var right = (
       <Right style={{flex:1}}>
-        <Button onPress={() => Actions.search({games:games})} transparent>
+        <Button onPress={() => Actions.search({games:this.state.games})} transparent>
           <Icon name='ios-search-outline' />
         </Button>
-        <Button onPress={() => Actions.gameLibrary({games:games})} transparent>
+        <Button onPress={() => Actions.gameLibrary({games:this.state.games})} transparent>
           <Thumbnail   source={require('../image/download.png')} small style={{width:20,height:20,borderRadius:0}}></Thumbnail>
         </Button>
       </Right>

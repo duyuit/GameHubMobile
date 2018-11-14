@@ -11,7 +11,7 @@ import { Actions } from 'react-native-router-flux';
 import Colors from '../Colors';
 import Text from '../component/Text';
 import GameListShow from './GameListShow';
-import ListGame from'../component/ListGame';
+import ListGame from '../component/ListGame';
 export default class Search extends Component {
   constructor(props) {
       super(props);
@@ -65,7 +65,7 @@ export default class Search extends Component {
             </Item>
           </Header>
          
-                 <ListGame specialList='true' games={this.state.games}></ListGame>
+                 <ListGame  games={this.state.games}></ListGame>
         
            
           
@@ -73,29 +73,6 @@ export default class Search extends Component {
     );
   }
 
-  renderResult() {
-    let items = [];
-    let stateItems = this.state.items
-    for(var i=0; i<stateItems.length; i+=2 ) {
-      if(stateItems[i+1]) {
-        items.push(
-          <Grid key={i}>
-            <Product key={stateItems[i].id} product={stateItems[i]} />
-            <Product key={stateItems[i+1].id} product={stateItems[i+1]} isRight />
-          </Grid>
-        );
-      }
-      else {
-        items.push(
-          <Grid key={i}>
-            <Product key={stateItems[i].id} product={stateItems[i]} />
-            <Col key={i+1} />
-          </Grid>
-        );
-      }
-    }
-    return items;
-  }
 
   search(text) {
 

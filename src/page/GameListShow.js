@@ -17,6 +17,7 @@ export default class GameListShow extends Component {
     super(props);
     this.state = {
      games:this.props.games,
+     games_backup:this.props.games,
      paidSelect : 'Top Paid',
      sortSelect:'Rating'
     };
@@ -24,17 +25,74 @@ export default class GameListShow extends Component {
   onPaidSelected(itemValue,itemIndex)
   {
       this.setState({paidSelect:itemValue});
-      switch(itemValue)
+      var games_temp = this.state.games_backup;
+      switch(itemIndex)
       {
-          case 'paid':
+          case 0:
+           games_temp = games_temp.filter(item => item.price !== 0)
+          break;
+          case 1:
+              games_temp = games_temp.filter(item => item.price === 0)
+          break;
+          case 2:
             this.state.games.sort();
           break;
           
       }
+      this.setState({games:games_temp});
+  }
+  sortByRating()
+  {
+
+  }
+  sortByPriceDown()
+  {
+    function compare(a,b) {
+      if (a.price < b.price)
+        return 1;
+      if (a.price > b.price)
+        return -1;
+      return 0;
+    }
+    var game_temp = this.state.games;
+    game_temp.sort(compare);
+    game_temp.push(game_temp[0]);
+    this.setState({games:game_temp});
+  }
+  sortByPriceUp()
+  {
+    function compare(a,b) {
+      if (a.price < b.price)
+        return -1;
+      if (a.price > b.price)
+        return 1;
+      return 0;
+    }
+    var game_temp = this.state.games;
+    game_temp.sort(compare);
+    game_temp.push(game_temp[0]);
+    this.setState({games:game_temp});
+    
+  }
+  componentWillMount()
+  {
+    // this.sortByPriceUp();
+    this.onPaidSelected(0,0);
   }
   onSortSelected(itemValue,itemIndex)
   {
     this.setState({sortSelect:itemValue});
+    switch(itemIndex)
+    {
+      case 0:
+       break;
+      case 1:
+        this.sortByPriceUp();
+        break;
+      case 2:
+        this.sortByPriceDown();
+        break;
+    }
 
   }
   render() {
@@ -81,7 +139,7 @@ export default class GameListShow extends Component {
 
         </View>
        
-        <ListGame specialList='true' games={this.props.games}></ListGame>
+        <ListGame games={this.state.games}></ListGame>
         </View>
         
     );

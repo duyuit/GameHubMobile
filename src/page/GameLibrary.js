@@ -11,7 +11,7 @@ import { Actions } from 'react-native-router-flux';
 // Our custom files and classes import
 import Navbar from '../component/Navbar';
 import Colors from '../Colors'
-import ListGame from '../component/ListGame';
+import ListGameCategory from '../component/ListGameCategory';
 export default class GameLibrary extends Component {
   constructor(props)
   {
@@ -88,7 +88,7 @@ export default class GameLibrary extends Component {
 
       
      
-        <ListGame specialList='true' games={this.state.games}></ListGame>
+        {/* <ListGameCategory games={this.state.games}></ListGameCategory> */}
         </View>
         
     );
