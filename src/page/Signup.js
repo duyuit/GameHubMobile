@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import { ScrollView } from 'react-native';
 import { Container, View, Left, Right, Button, Icon, Item, Input } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-import {axios} from 'axios'
+import axios from 'axios';
 // Our custom files and classes import
 import Colors from '../Colors';
 import Text from '../component/Text';
@@ -23,7 +23,8 @@ export default class Signup extends Component {
         password: '',
         rePassword: '',
         hasError: false,
-        errorText: ''
+        errorText: '',
+        signing:false
       };
 
   }
@@ -76,7 +77,10 @@ export default class Signup extends Component {
                 <Icon active name='ios-lock' style={{color: '#687373'}} />
                 <Input placeholder='Repeat your password' onChangeText={(text) => this.setState({rePassword: text})} secureTextEntry={true} placeholderTextColor="#687373" />
             </Item>
+          
             {this.state.hasError?<Text style={{color: "#c0392b", textAlign: 'center', marginTop: 10}}>{this.state.errorText}</Text>:null}
+            {this.state.signing?<Text style={{color: "#c0392b", textAlign: 'center', marginTop: 10,fontSize:20}}>{this.state.errorText}</Text>:null}
+           
             <View style={{alignItems: 'center'}}>
               <Button  rounded onPress={() => this.signup()}style={{justifyContent: "center",width:110,backgroundColor: Colors.navbarBackgroundColor, marginTop: 20}}>
                 <Text style={{color: '#fdfdfd',fontSize:18}}>Signup</Text>
@@ -89,6 +93,7 @@ export default class Signup extends Component {
   }
 
   signup() {
+    this.setState({hasError: false,signing:true,errorText:'Loading'});
     if(this.state.email===""||this.state.name===""||this.state.username===""||this.state.password===""||this.state.rePassword==="") {
       this.setState({hasError: true, errorText: 'Please fill all fields !'});
       return;
@@ -109,9 +114,28 @@ export default class Signup extends Component {
       this.setState({hasError: true, errorText: 'Passwords does not match !'});
       return;
     }
-    this.setState({hasError: false});
-
-    Actions.login();
+    
+    axios.post('http://localhost:49911/api/Accounts/', { 
+      email: this.state.email,
+      password:this.state.password,
+      hobbies: "string",
+      fullName: this.state.name,
+      phoneNumber: "string",
+      userName: this.state.username 
+    })
+    .then(res => {
+      if(res.data.isSuccess)
+      {
+        this.setState({hasError:false,errorText:'Registration Success, backing to Login'})
+        setTimeout(() => {
+          Actions.login({username:this.state.email});
+        }, 2000);
+      }else
+      {
+        this.setState({hasError:false,errorText:'Error'})
+      }
+    });
+    
   }
 
   verifyEmail(email) {

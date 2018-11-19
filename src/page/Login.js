@@ -7,7 +7,8 @@ import React, { Component } from 'react';
 import {Thumbnail, Container, View, Left, Right, Button, Icon, Item, Input } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import {TouchableOpacity} from 'react-native'
-import ImageSlider from 'react-native-image-slider';
+import axios from 'axios';
+
 // Our custom files and classes import
 import Colors from '../Colors';
 import Text from '../component/Text';
@@ -46,8 +47,8 @@ export default class Login extends Component {
             </View>
           </View>
           <Item>
-              <Icon active name='ios-person' style={{color: "#687373"}}  />
-              <Input placeholder='Username' onChangeText={(text) => this.setState({username: text})} placeholderTextColor="#687373" />
+              <Icon active name='ios-mail' style={{color: "#687373"}}  />
+              <Input placeholder='Email' onChangeText={(text) => this.setState({username: text})} placeholderTextColor="#687373">{this.props.username}</Input>
           </Item>
           <Item>
               <Icon active name='ios-lock' style={{color: "#687373"}} />
@@ -71,8 +72,33 @@ export default class Login extends Component {
       Username: this.state.username
       Password: this.state.password
     */
-    //this.setState({hasError: true, errorText: 'Invalid username or password !'});
-    Actions.home();
+   if(this.state.username ==="" || this.state.password ==="")
+   {
+    this.setState({hasError: true, errorText: 'Please fill all fields !'});
+    return;
+   }
+
+   axios.post('http://localhost:49911/api/Auths/', { 
+      email: this.state.email,
+      password:this.state.password,
+    })
+    .then(res => {
+      if(res.data.isSuccess)
+      {
+        this.setState({hasError:false,errorText:'Registration Success, backing to Login'})
+        setTimeout(() => {
+          Actions.login({username:this.state.username});
+        }, 2000);
+      }else
+      {
+        this.setState({hasError:false,errorText:'Error'})
+      }
+      console.log(res);
+    });
+   
+ 
+    
+    //Actions.home();
   }
 
 
