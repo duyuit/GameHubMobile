@@ -9,6 +9,8 @@ import GameShow from './src/page/GameShow'
 import GameListShow from './src/page/GameListShow'
 import Search from './src/page/Search'
 import GameLibrary from './src/page/GameLibrary'
+import Payment from './src/page/Payment'
+
 
 export default class App extends Component {
   render() {
@@ -30,7 +32,8 @@ export default class App extends Component {
             <Scene key="category" component={Category} hideNavBar />
             <Scene key="product" component={Product} hideNavBar />
             <Scene key="imageGallery" component={ImageGallery} modal hideNavBar /> */}
-            <Scene  initial key="login" component={Login} hideNavBar />
+            <Scene   key="payment" component={Payment} hideNavBar />
+            <Scene initial  key="login" component={Login} hideNavBar />
             <Scene   key="signup" component={Signup} hideNavBar />
             <Scene key="gameListShow" component={GameListShow} hideNavBar />
 

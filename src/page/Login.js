@@ -14,6 +14,7 @@ import Colors from '../Colors';
 import Text from '../component/Text';
 import Navbar from '../component/Navbar';
 import Signup from './Signup'
+import { MyGlobal } from '../component/MyGlobal';
 
 export default class Login extends Component {
   constructor(props) {
@@ -22,7 +23,8 @@ export default class Login extends Component {
         username: '',
         password: '',
         hasError: false,
-        errorText: ''
+        errorText: '',
+        enableButton:false
       };
   }
 
@@ -47,8 +49,8 @@ export default class Login extends Component {
             </View>
           </View>
           <Item>
-              <Icon active name='ios-mail' style={{color: "#687373"}}  />
-              <Input placeholder='Email' onChangeText={(text) => this.setState({username: text})} placeholderTextColor="#687373">{this.props.username}</Input>
+              <Icon active name='ios-person' style={{color: "#687373"}}  />
+              <Input placeholder='Email or Username' onChangeText={(text) => this.setState({username: text})} placeholderTextColor="#687373">{this.props.username}</Input>
           </Item>
           <Item>
               <Icon active name='ios-lock' style={{color: "#687373"}} />
@@ -57,7 +59,7 @@ export default class Login extends Component {
           {this.state.hasError?<Text style={{color: "#c0392b", textAlign: 'center', marginTop: 10}}>{this.state.errorText}</Text>:null}
           
           <View style={{alignItems: 'center'}}>
-            <Button rounded onPress={() => this.login()} style={{justifyContent: "center",width:110,backgroundColor: Colors.navbarBackgroundColor, marginTop: 20}}>
+            <Button disabled={this.state.enableButton} rounded onPress={() => this.login()} style={{justifyContent: "center",width:110,backgroundColor: Colors.navbarBackgroundColor, marginTop: 20}}>
               <Text style={{color: '#fdfdfd',fontSize:18}}>Login</Text>
             </Button>
           </View>
@@ -72,31 +74,36 @@ export default class Login extends Component {
       Username: this.state.username
       Password: this.state.password
     */
-   if(this.state.username ==="" || this.state.password ==="")
+   if(this.state.username =="" || this.state.password =="")
    {
     this.setState({hasError: true, errorText: 'Please fill all fields !'});
     return;
    }
+   else{
+    this.setState({enableButton:true,hasError: true, errorText: 'Waiting...'});
+   }
 
    axios.post('http://localhost:49911/api/Auths/', { 
-      email: this.state.email,
+      email: this.state.username,
       password:this.state.password,
     })
     .then(res => {
       if(res.data.isSuccess)
       {
-        this.setState({hasError:false,errorText:'Registration Success, backing to Login'})
+        this.setState({hasError:true,errorText:'Registration Success, going to Home'})
+       // alert('Registration Success, going to Home',1);
+        MyGlobal.user_id = res.data.payload.id;
         setTimeout(() => {
-          Actions.login({username:this.state.username});
+          Actions.home();
         }, 2000);
       }else
       {
-        this.setState({hasError:false,errorText:'Error'})
+        this.setState({enableButton:false,hasError:true,errorText:res.data.message})
       }
-      console.log(res);
+    
     });
    
- 
+
     
     //Actions.home();
   }

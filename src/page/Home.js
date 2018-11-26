@@ -15,6 +15,7 @@ import SideMenu from '../component/SideMenu';
 import SideMenuDrawer from '../component/SideMenuDrawer';
 import CategoryBlock from '../component/CategoryBlock';
 import Colors from '../Colors'
+import { MyGlobal } from '../component/MyGlobal';
 
 export default class Home extends Component {
  constructor(props)
@@ -23,7 +24,7 @@ export default class Home extends Component {
   this.state = {
     games:[],
     response:'',
-    isDone:false
+    isDone:false,
   };
  }
 
@@ -40,7 +41,7 @@ export default class Home extends Component {
         }).then(()=>{
           this.setState({isDone:true});
         });
-     
+     console.log('ID ne ' + MyGlobal.user_id);
 
   }
   render() {

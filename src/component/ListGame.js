@@ -19,6 +19,7 @@ export default class ListGame extends Component {
     this.state = {
      games:[],
      index:0,
+     isLib:this.props.isLib
     };
 
    
@@ -32,7 +33,7 @@ export default class ListGame extends Component {
       data={this.props.games}
       renderItem={({ item: rowData }) => {
          return (
-             <GameItem game={rowData}></GameItem>
+             <GameItem game={rowData} isLib = {this.state.isLib}></GameItem>
          );
        }}
       keyExtractor={(item, index) => index}

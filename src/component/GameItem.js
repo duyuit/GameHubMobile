@@ -44,16 +44,22 @@ export default class GameItem extends Component {
       <Body/>
   
         <View>
-      <TouchableOpacity  style={{borderWidth:1,borderColor:'white',marginTop:8,width:80,height:40,borderRadius:30,backgroundColor:Colors.navbarBackgroundColor}}>
-      
+      <TouchableOpacity
+      onPress = {()=>
+      {
+          Actions.payment({game:this.state.game});
+      }}
+        style={{borderWidth:1,borderColor:'white',marginTop:8,width:80,height:40,borderRadius:30,backgroundColor:Colors.navbarBackgroundColor}}>
     {
-      this.props.game.price === 0 ?  
-      <Text style={{paddingTop:10,textAlign:'center',width:'100%',color:'white',fontSize:15,fontWeight:'bold'}}>
-      FREE</Text>
-      :
-      <Text style={{paddingTop:10,textAlign:'center',width:'100%',color:'white',fontSize:15,fontWeight:'bold'}}>
-      {this.props.game.price/1000}K</Text>
+        this.props.game.price === 0 ?  
+          <Text style={{paddingTop:10,textAlign:'center',width:'100%',color:'white',fontSize:15,fontWeight:'bold'}}>
+          FREE</Text>
+          :
+          <Text style={{paddingTop:10,textAlign:'center',width:'100%',color:'white',fontSize:15,fontWeight:'bold'}}>
+          {this.props.game.price/1000}K</Text>
     }
+      
+    
      
       </TouchableOpacity>
       

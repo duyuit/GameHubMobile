@@ -4,14 +4,16 @@
 
 // React native and others libraries imports
 import React, { Component } from 'react';
-import {ScrollView, Image, Dimensions, TouchableOpacity,Picker } from 'react-native';
+import {Text,ScrollView, Image, Dimensions, TouchableOpacity,Picker } from 'react-native';
 import { Left,Container, Content, View, Header, Body, Icon, Item, Input, Thumbnail, Button, Right, Grid, Col, Footer } from 'native-base';
-
 import { Actions } from 'react-native-router-flux';
+import axios from 'axios';
+import { MyGlobal } from '../component/MyGlobal';
+
 // Our custom files and classes import
 import Navbar from '../component/Navbar';
 import Colors from '../Colors'
-import ListGameCategory from '../component/ListGameCategory';
+import ListGame from '../component/ListGame';
 export default class GameLibrary extends Component {
   constructor(props)
   {
@@ -24,17 +26,18 @@ export default class GameLibrary extends Component {
       backup: props.games
     };
   }
-  onSearch(text)
+ 
+  componentWillMount()
   {
-    this.setState({searchText: text});
-     if(text == "")
-    {
-      this.setState({games:this.state.backup});
-      return;
-    }
-  //  this.search(this.state.searchText);
-  }
+    axios.get('http://localhost:49911/api/Accounts/'+MyGlobal.user_id)
+    .then(response =>{
+      this.setState({ games: response.data.payload.games});
 
+      console.log(this.state.games);
+    }).then(()=>{
+      this.setState({isDone:true});
+    });
+  }
   render() {
     var left = (
         <Left style={{flex:1}}>
@@ -87,24 +90,15 @@ export default class GameLibrary extends Component {
           }
 
       
-     
-        {/* <ListGameCategory games={this.state.games}></ListGameCategory> */}
+        {
+        this.state.isDone? 
+        <ListGame games={this.state.games} isLib='true'></ListGame>
+        :
+        <Text>Loading...</Text>
+        }
         </View>
         
     );
-  }
-  search(text) {
-
-    var newGame=[];
-   
-    for(var i=0;i<this.state.backup.length;i++)
-    {
-      var string = this.state.backup[i].name;
-      if(string.includes(text))
-        newGame.push(this.state.backup[i]);
-    }
-  
-    this.setState({games: newGame});
   }
 
 

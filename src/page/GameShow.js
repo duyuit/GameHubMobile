@@ -51,7 +51,12 @@ export default class GameItem extends Component {
             <View style={{ flex:1,height:120,flexDirection:'column',marginLeft:20,justifyContent:'space-between'}}>
                 <Text style={{fontWeight:'bold',fontSize:21,color:'rgba(255,255,255,0.9)'}}>{this.state.game.name}</Text>
                 <Text style={{fontSize:15,color:'rgba(255,255,255,0.6)'}}>{this.state.game.publisher.name}</Text>
-                <TouchableOpacity  style={{borderWidth:2,borderColor:'rgb(0,191,255)',marginTop:30,width:100,height:30,borderRadius:30,backgroundColor:'rgb(0,191,255)'}}>
+                <TouchableOpacity
+                onPress = {()=>
+                  {
+                      Actions.payment({game:this.state.game});
+                  }}
+                    style={{borderWidth:2,borderColor:'rgb(0,191,255)',marginTop:30,width:100,height:30,borderRadius:30,backgroundColor:'rgb(0,191,255)'}}>
                     <Text style={{paddingTop:2,textAlign:'center',width:'100%',color:'white',fontSize:15,fontWeight:'bold'}}>
                     {this.state.price}</Text>
                 </TouchableOpacity>
