@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameStore", "GameStore\GameStore.csproj", "{46081890-8866-4930-88C7-7C571F7EBB33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStore.Test", "GameStore.Test\GameStore.Test.csproj", "{D8F6B8A3-6E2F-4150-B0DE-D30C3B0EA61D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46081890-8866-4930-88C7-7C571F7EBB33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46081890-8866-4930-88C7-7C571F7EBB33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46081890-8866-4930-88C7-7C571F7EBB33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46081890-8866-4930-88C7-7C571F7EBB33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8F6B8A3-6E2F-4150-B0DE-D30C3B0EA61D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8F6B8A3-6E2F-4150-B0DE-D30C3B0EA61D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8F6B8A3-6E2F-4150-B0DE-D30C3B0EA61D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8F6B8A3-6E2F-4150-B0DE-D30C3B0EA61D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CA564043-34FA-4A64-A2CD-7EC35A439A41}
+	EndGlobalSection
+EndGlobal
