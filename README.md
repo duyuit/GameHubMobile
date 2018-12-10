@@ -1,3 +1,3 @@
 <h1>Phần mềm GameStore</h1>
 <br />
-![Screenshot](src/image/home.png)
+<img src="./image/home.png"/>
