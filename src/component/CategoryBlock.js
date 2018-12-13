@@ -76,7 +76,7 @@ export default class CategoryBlock extends Component {
     
       <View  style={{flex:1,paddingTop:this.props._margin,backgroundColor: Colors.navbarBackgroundColor}}>
       <View> 
-        <Text style={{fontSize:25,color:'white',fontWeight:'bold'}}>Super Hot!!!!!</Text>
+        <Text style={{fontSize:25,color:'white',fontWeight:'bold'}}>{this.props.title}</Text>
       
         </View>
         <TouchableOpacity

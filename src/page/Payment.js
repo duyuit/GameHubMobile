@@ -30,7 +30,9 @@ export default class Checkout extends Component {
       this.state = {
         game:this.props.game,
         hasError:false,
-        errorText:''
+        errorText:'',
+        balance:0,
+        isDone:false
       };
 
   }
@@ -38,6 +40,11 @@ export default class Checkout extends Component {
 
 
   componentWillMount() {
+    axios.get('http://localhost:49911/api/Accounts/'+MyGlobal.user_id)
+    .then(response =>{
+        this.setState({balance:response.data.payload.money})
+        this.setState({isDone:true});
+    })
   }
 
 
@@ -78,6 +85,9 @@ export default class Checkout extends Component {
 
         <Navbar left={left} right={right} title="CHECKOUT" />
 
+      {
+        this.state.isDone?
+     
         <Content padder>
       
          <View style={{flexDirection:'row'}}>
@@ -124,7 +134,7 @@ export default class Checkout extends Component {
 
           </View>
           {this.state.hasError?<Text style={{color: "#c0392b", textAlign: 'center', marginTop: 10}}>{this.state.errorText}</Text>:null}
-
+          <Text>Balance: {this.state.balance}</Text>
           <View style={{marginTop: 10, marginBottom: 10, paddingBottom: 7}}>
 
             <Button onPress={() => this.checkout()} style={{backgroundColor: Colors.navbarBackgroundColor}} block iconLeft>
@@ -136,7 +146,9 @@ export default class Checkout extends Component {
           </View>
 
         </Content>
-
+        :
+        <Text>Loading....</Text>
+   }
       </Container>
 
     );

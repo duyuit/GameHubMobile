@@ -18,6 +18,31 @@ export default class GameItem extends Component {
      game:props.game,
     };
   }
+  renderLib()
+  {
+    if(this.props.isLib === 'true')
+    return
+    else
+    return(
+      <TouchableOpacity
+      onPress = {()=>
+      {
+          Actions.payment({game:this.state.game});
+      }}
+        style={{borderWidth:1,borderColor:'white',marginTop:8,width:80,height:40,borderRadius:30,backgroundColor:Colors.navbarBackgroundColor}}>
+ 
+
+    {
+        this.props.game.price === 0 ?  
+          <Text style={{paddingTop:10,textAlign:'center',width:'100%',color:'white',fontSize:15,fontWeight:'bold'}}>
+          FREE</Text>
+          :
+          <Text style={{paddingTop:10,textAlign:'center',width:'100%',color:'white',fontSize:15,fontWeight:'bold'}}>
+          {this.props.game.price/1000}K</Text>
+    }
+      </TouchableOpacity>
+    )
+  }
   
   render() {
     return(
@@ -27,6 +52,8 @@ export default class GameItem extends Component {
       style={{flexDirection:'row',marginTop:20}}
       onPress = {()=>
       {
+        if(this.props.isLib === 'true')
+          return;
           Actions.GameShow({game:this.state.game});
       }}
     >
@@ -43,25 +70,9 @@ export default class GameItem extends Component {
       </View>
       <Body/>
   
-        <View>
-      <TouchableOpacity
-      onPress = {()=>
-      {
-          Actions.payment({game:this.state.game});
-      }}
-        style={{borderWidth:1,borderColor:'white',marginTop:8,width:80,height:40,borderRadius:30,backgroundColor:Colors.navbarBackgroundColor}}>
-    {
-        this.props.game.price === 0 ?  
-          <Text style={{paddingTop:10,textAlign:'center',width:'100%',color:'white',fontSize:15,fontWeight:'bold'}}>
-          FREE</Text>
-          :
-          <Text style={{paddingTop:10,textAlign:'center',width:'100%',color:'white',fontSize:15,fontWeight:'bold'}}>
-          {this.props.game.price/1000}K</Text>
-    }
+      <View>
       
-    
-     
-      </TouchableOpacity>
+      {this.renderLib()}
       
       </View> 
     </TouchableOpacity>
