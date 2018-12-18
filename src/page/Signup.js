@@ -31,26 +31,10 @@ export default class Signup extends Component {
 
 
   render() {
-    var left = (
-      <Left style={{flex:1}}>
-        <Button onPress={() => Actions.pop()} transparent>
-          <Icon name='ios-arrow-back' />
-        </Button>
-      </Left>
-    );
-    var right = (
-      <Right style={{flex:1}}>
-        <Button onPress={() => Actions.search()} transparent>
-          <Icon name='ios-search-outline' />
-        </Button>
-        <Button onPress={() => Actions.cart()} transparent>
-          <Icon name='ios-cart' />
-        </Button>
-      </Right>
-    );
+    
     return(
       <Container style={{backgroundColor: '#fdfdfd'}}>
-        <Navbar left={left} right={right} title="SIGN UP" />
+        <Navbar title="SIGN UP" />
         <ScrollView contentContainerStyle={{flexGrow: 1}}>
           <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', paddingLeft: 50, paddingRight: 50}}>
             <View style={{marginBottom: 35, width: '100%'}}>
@@ -132,7 +116,7 @@ export default class Signup extends Component {
         }, 2000);
       }else
       {
-        this.setState({hasError:false,errorText:'Error'})
+        this.setState({hasError:false,errorText:res.data.message})
       }
     });
     

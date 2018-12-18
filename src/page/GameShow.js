@@ -7,7 +7,6 @@ import React, { Component } from 'react';
 import {ScrollView, Image, Dimensions, TouchableOpacity } from 'react-native';
 import {Card,CardItem, View,Icon, Button ,List,ListItem,Thumbnail,Left,Body,Right } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-import { Rating } from 'react-native-elements';
 // Our custom files and classes import
 import Text from '../component/Text';
 import Navbar from '../component/Navbar';
@@ -64,16 +63,7 @@ export default class GameItem extends Component {
         </View>
            
         <View style={styles.container2}>
-        <Rating
-        type="custom"
-        ratingColor='black'
-        ratingBackgroundColor='black'
-
-        startingValue={5.0}
-        readonly
-        imageSize={30}
-        style={{ paddingVertical: 10}}  />
-         <Body/>
+               <Body/>
         </View>
         <ListGameImage images={this.state.images}></ListGameImage>
         <View style={{marginTop:10,width:380,height:1,backgroundColor:'white',alignSelf:'center'}}></View>
