@@ -12,7 +12,7 @@ chính:
  Game Library
  Payment
 ```
-#### 4.1.2 Chi ti ế t các thành ph ầ n
+ 4.1.2 Chi ti ế t các thành ph ầ n
 
 ```
 Login: Cung cấp cho người dùng các trường để nhập tài khoản, mật
@@ -53,17 +53,17 @@ lại của tài khoản.
 ```
 ### 4.2 CÁC THƯ VIỆ N S Ử D Ụ NG TRONG Ứ NG D Ụ NG
 
-#### 4.2.1 Axios
+ 4.2.1 Axios
 
 - Axios là một thư viện HTTP Client dựa trên Promise. Cơ bản thì nó cung cấp
 một API cho việc xử lý XHR (XMLHttpRequests).
 
-#### 4.2.1 ImageSlider
+4.2.1 ImageSlider
 
 - Một thư viện cung cấp một view hỗ trợ xem ảnh dưới dạng lướt, có hỗ trợ
 tự động chuyển ảnh với animation.
 
-#### 4.2.2 React Native Base
+4.2.2 React Native Base
 
 - Một thư viện hỗ trợ sẵn những component rất tiện lợi dựa trên thư viện React
 Native
