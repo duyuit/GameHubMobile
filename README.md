@@ -51,7 +51,7 @@ Payment: Khi người dùng chọn một game và tiến hành mua, giao diện
 thanh toán sẽ được hiển thị chứa thông thanh toán của game, số tiền dư còn
 lại của tài khoản.
 ```
-### 4.2 CÁC THƯ VIỆ N S Ử D Ụ NG TRONG Ứ NG D Ụ NG
+4.2 CÁC THƯ VIỆ N S Ử D Ụ NG TRONG Ứ NG D Ụ NG
 
  4.2.1 Axios
 
@@ -69,37 +69,36 @@ tự động chuyển ảnh với animation.
 Native
 
 
-### 4.3 GIAO DI ỆN CHƯƠNG TRÌNH
+4.3 GIAO DI ỆN CHƯƠNG TRÌNH
 
-#### 4.3.1 Giao di ệ n Login..................................................................................................
-
-
-#### 4.3.2 Giao di ện đăng kí
-
-##### .
+4.3.1 Giao di ệ n Login..................................................................................................
 
 
-#### 4.3.3 Giao di ệ n Home
+4.3.2 Giao di ện đăng kí
 
 
-#### 4.3.4 Giao di ệ n Game Detail
 
-##### .
-
-
-#### 4.3.5 Giao Game List
+ 4.3.3 Giao di ệ n Home
 
 
-#### 4.3.6 Giao di ệ n Game Library
+4.3.4 Giao di ệ n Game Detail
+
+
+
+
+4.3.5 Giao Game List
+
+
+4.3.6 Giao di ệ n Game Library
 
 
 4.3.7 Giao di _ệ_ n Payment
 
 
 
-### 4.4 CÀI ĐẶ T VÀ KI Ể M TH Ử
+4.4 CÀI ĐẶ T VÀ KI Ể M TH Ử
 
-#### 4.3.1 Môi trườ ng
+4.3.1 Môi trườ ng
 
 +Phát triển dựa trên môi trường Android
 
@@ -111,7 +110,7 @@ Native
 
 + SQL Server
 
-#### 4.3.2 Th ử nghi ệm và đánh giá kế t qu ả
+4.3.2 Th ử nghi ệm và đánh giá kế t qu ả
 
 - Cài đặt Server
 
@@ -119,7 +118,7 @@ Native
 
 +Gõ lệnh update-database trong console nuget để cập nhật database
 
-#### 4.3.3 Th ử nghi ệm và đánh giá kế t qu ả
+4.3.3 Th ử nghi ệm và đánh giá kế t qu ả
 
 Thử nghiệm:
 
@@ -164,7 +163,7 @@ Cuối cùng nhóm em xin cảm ơn Thầy Cô đã tận tình chỉ dạy và 
 nghiên cứu và học tập thật tốt trong thời gian sắp tới.
 ```
 
-## MÃ NGU Ồ N M Ở VÀ TÀI LI Ệ U THAM KH Ả O
+MÃ NGU Ồ N M Ở VÀ TÀI LI Ệ U THAM KH Ả O
 
 [1] https://facebook.github.io/react-native/
 
