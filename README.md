@@ -1,7 +1,6 @@
 
-### 4.1 XÂY D Ự NG Ứ NG D Ụ NG
 
-#### 4.1.1 Gi ớ i thi ệ u t ổ ng quan ki ến trúc chương trình
+####  Gi ớ i thi ệ u t ổ ng quan ki ến trúc chương trình
 Chương trình xây dựng dựa trên 6 Activity chính để thực hiên các chức năng
 chính:
  Login
@@ -12,7 +11,7 @@ chính:
  Game Library
  Payment
 ```
- 4.1.2 Chi ti ế t các thành ph ầ n
+Chi ti ế t các thành ph ầ n
 
 ```
 Login: Cung cấp cho người dùng các trường để nhập tài khoản, mật
@@ -51,54 +50,54 @@ Payment: Khi người dùng chọn một game và tiến hành mua, giao diện
 thanh toán sẽ được hiển thị chứa thông thanh toán của game, số tiền dư còn
 lại của tài khoản.
 ```
-4.2 CÁC THƯ VIỆ N S Ử D Ụ NG TRONG Ứ NG D Ụ NG
+CÁC THƯ VIỆ N S Ử D Ụ NG TRONG Ứ NG D Ụ NG
 
- 4.2.1 Axios
+ Axios
 
 - Axios là một thư viện HTTP Client dựa trên Promise. Cơ bản thì nó cung cấp
 một API cho việc xử lý XHR (XMLHttpRequests).
 
-4.2.1 ImageSlider
+ImageSlider
 
 - Một thư viện cung cấp một view hỗ trợ xem ảnh dưới dạng lướt, có hỗ trợ
 tự động chuyển ảnh với animation.
 
-4.2.2 React Native Base
+ React Native Base
 
 - Một thư viện hỗ trợ sẵn những component rất tiện lợi dựa trên thư viện React
 Native
 
 
-4.3 GIAO DI ỆN CHƯƠNG TRÌNH
+GIAO DI ỆN CHƯƠNG TRÌNH
 
-4.3.1 Giao di ệ n Login..................................................................................................
-
-
-4.3.2 Giao di ện đăng kí
+Giao di ệ n Login..................................................................................................
 
 
-
- 4.3.3 Giao di ệ n Home
-
-
-4.3.4 Giao di ệ n Game Detail
+Giao di ện đăng kí
 
 
 
-
-4.3.5 Giao Game List
-
-
-4.3.6 Giao di ệ n Game Library
+Giao di ệ n Home
 
 
-4.3.7 Giao di _ệ_ n Payment
+Giao di ệ n Game Detail
 
 
 
-4.4 CÀI ĐẶ T VÀ KI Ể M TH Ử
 
-4.3.1 Môi trườ ng
+Giao Game List
+
+
+Giao di ệ n Game Library
+
+
+Giao di _ệ_ n Payment
+
+
+
+CÀI ĐẶ T VÀ KI Ể M TH Ử
+
+Môi trườ ng
 
 +Phát triển dựa trên môi trường Android
 
@@ -110,7 +109,7 @@ Native
 
 + SQL Server
 
-4.3.2 Th ử nghi ệm và đánh giá kế t qu ả
+Th ử nghi ệm và đánh giá kế t qu ả
 
 - Cài đặt Server
 
@@ -118,7 +117,7 @@ Native
 
 +Gõ lệnh update-database trong console nuget để cập nhật database
 
-4.3.3 Th ử nghi ệm và đánh giá kế t qu ả
+Th ử nghi ệm và đánh giá kế t qu ả
 
 Thử nghiệm:
 
@@ -137,7 +136,7 @@ muốn.
  Nhìn chung đã hoàn thành tốt ứng dụng một cách cố gắng nhất.
 ```
 
-## K Ế T LU ẬN VÀ HƯỚ NG M Ở R Ộ NG
+K Ế T LU ẬN VÀ HƯỚ NG M Ở R Ộ NG
 
 ```
 Sau thời gian dài tìm hiểu và hoàn thành đồ án, chúng em cảm thấy rất vui vì
